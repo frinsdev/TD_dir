@@ -238,30 +238,30 @@ void addnewPDSuccess() {
 
 // View All
 void viewAll_PD() {
-   int choice;
+   int choice, empty;
 
    FILE *fp1;
    fp1 = fopen("Phonebook", "r");
 
    system("clear");
+   empty = isEmpty_PD();
    printf("List of saved numbers: \n\n");
-
+   if(empty == 0) {
+      printf("No data available!\n");
+   }
    while(fread(&phoneB, sizeof(phoneB), 1, fp1)) {
       printf("ID: %d \nName: %s\nTel no.: %d\n\n", phoneB.id_num, phoneB.name, phoneB.phone_number);
    }
-   printf("\n[1]: Add New\n[2]: Edit\n[3]: Delete\n[4]: Back\n\nChoose: ");
+   printf("\n[1]: Add New\n[2]: Delete\n[3]: Back\n\nChoose: ");
       scanf("%d", &choice);
 
       if(choice == 1) {
          return addnewPD();
       }
       else if(choice == 2) {
-         return viewAll_PD();
-      }
-      else if(choice == 3) {
          return deleteData_PD();
       }
-      else if(choice == 4) {
+      else if(choice == 3) {
          return phoneDirectory();
       }else{
          return viewAll_PD();
@@ -530,30 +530,30 @@ void addnewEDSuccess() {
 
 // View All
 void viewAll_ED() {
-   int choice;
+   int choice, empty;
 
    FILE *fp1;
    fp1 = fopen("Dictionary", "r");
 
    system("clear");
+   empty = isEmpty_ED();
    printf("List of saved Terms: \n\n");
-
+   if(empty == 0) {
+      printf("No data available!\n");
+   }
    while(fread(&engD, sizeof(engD), 1, fp1)) {
       printf("ID: %d \nTerm: %s\nDefinition: %s\n\n", engD.id_num, engD.terms, engD.definitions);
    }
-   printf("\n[1]: Add New term\n[2]: Edit term\n[3]: Delete\n[4]: Back\n\nChoose: ");
+   printf("\n[1]: Add New term\n[2]: Delete\n[3]: Back\n\nChoose: ");
       scanf("%d", &choice);
 
       if(choice == 1) {
          return addnewED();
       }
       else if(choice == 2) {
-         return viewAll_ED();
-      }
-      else if(choice == 3) {
          return deleteData_ED();
       }
-      else if(choice == 4) {
+      else if(choice == 3) {
          return englishDictionary();
       }else{
          return viewAll_ED();
@@ -750,5 +750,4 @@ void search_ED() {
    }else{
       return search_ED();
    }
-
 }
