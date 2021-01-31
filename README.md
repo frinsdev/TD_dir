@@ -2,8 +2,8 @@
 Telephone directory and English dictionary in a single program using c
 
 # How to run
-Using GCC compiler:
-
+## Using GCC compiler:
+```markdown
 1. Install GCC compiler
 2. Open Terminal or command line
 3. Head over to drectory where your C file is saved
